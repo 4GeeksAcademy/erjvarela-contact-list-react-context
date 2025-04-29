@@ -13,10 +13,6 @@ export default function storeReducer(store, action = {}) {
       return {
         contacts: contacts
       };
-      return {
-        contacts: contacts
-      }
-
     case 'add_contact':
       const newContact = action.payload
       console.log(newContact)
@@ -24,10 +20,14 @@ export default function storeReducer(store, action = {}) {
         ...store,
         contacts: [...store.contacts, newContact]
       };
-    case 'del_contact':
-      console.log('hello')
-      return {};
-
+    case 'remove_contact':
+      const contactIdRemoved = action.payload
+      return {
+        ...store,
+        contacts: store.contacts.filter((contact) => {
+          return contact.id !== contactIdRemoved;
+        })
+      };
     default:
       throw Error('Unknown action.');
   }

@@ -66,9 +66,9 @@ export const Home = () => {
 
   const handleDeleteContact = async (idToDelete) => {
     const deleted = await fetchDeleteContact(idToDelete);
-    // if (deleted) {
-    //   dispatch({ type: 'add_contacts', payload: data });
-    // }
+   if (deleted) {
+     dispatch({ type: 'remove_contact', payload: idToDelete });
+   }
   }
 
   useEffect(() => {

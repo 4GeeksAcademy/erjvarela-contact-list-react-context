@@ -43,8 +43,8 @@ const AddContact = () => {
       address: address,
     }
     const newContact = await fetchNewContact(newContactData)
-    console.log(newContact)
     dispatch({ type: 'add_contact', payload: newContact });
+    console.log(store.contacts)
   }
   
   return (
