@@ -45,7 +45,7 @@ const ContactCard = (props) => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">Delete Contact</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => setShowModal(false)}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -53,7 +53,7 @@ const ContactCard = (props) => {
               <p>Are you sure you would like to delete?</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary">Cancel</button>
+              <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Cancel</button>
               <button type="button" onClick={handleDelete} className="btn btn-secondary" data-dismiss="modal">Delete</button>
             </div>
           </div>

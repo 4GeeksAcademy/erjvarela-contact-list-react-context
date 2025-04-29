@@ -33,10 +33,11 @@ async function fetchUpdateContact(newContactData, contactId) {
 const EditContact = () => {
   const { store, dispatch } = useGlobalReducer();
   let { contactId } = useParams();
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  let contactInfo = store.contacts.filter(contact => contact.id == contactId)[0];
+  const [fullName, setFullName] = useState(contactInfo.name);
+  const [email, setEmail] = useState(contactInfo.email);
+  const [phone, setPhone] = useState(contactInfo.phone);
+  const [address, setAddress] = useState(contactInfo.address);
 
   const updateContact = async () => {
     const newContactData = {
