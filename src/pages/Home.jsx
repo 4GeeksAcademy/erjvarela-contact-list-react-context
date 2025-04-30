@@ -44,6 +44,9 @@ async function fetchDeleteContact(idToDelete) {
 async function fetchGetContacts() {
   try {
     const response = await fetch('https://playground.4geeks.com/contact/agendas/erjvarela/contacts');
+    if (response.status === 404) {
+      initializeAgenda();
+    }
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -66,14 +69,14 @@ export const Home = () => {
 
   const handleDeleteContact = async (idToDelete) => {
     const deleted = await fetchDeleteContact(idToDelete);
-   if (deleted) {
-     dispatch({ type: 'remove_contact', payload: idToDelete });
-   }
+    if (deleted) {
+      dispatch({ type: 'remove_contact', payload: idToDelete });
+    }
   }
 
   useEffect(() => {
     getContacts();
-  },[]);
+  }, []);
 
   return (
     <div className="m-2">
